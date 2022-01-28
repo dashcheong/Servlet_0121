@@ -63,8 +63,7 @@
 	    list.add(map);
 			
 	
-	    String search = request.getParameter("search");
-	    String option = request.getParameter("option");
+
 		%>
 
 		<h1 class = "text-center">책 목록</h1>
@@ -78,12 +77,12 @@
 				</tr>			
 			</thead>
 			<tbody>
-				<%for(int i = 0; i < list.size(); i++){ %>
+				<%for(Map<String,Object> book : list){ %>
 		
-					<tr>
-						<th><%=list.get(i).get("id") %></th>
-						<th><img src="<%=list.get(i).get("image") %>" width="100"></th>
-						<th><a href="/jsp/test08_2.jsp" class="display-4 text-primary" ><%=list.get(i).get("title") %></a></th>
+						<tr>
+						<th><%=book.get("id") %></th>
+						<th><img src="<%=book.get("image") %>" width="100" alt=<%=book.get("title") %>></th>
+						<th><a href="/jsp/test08_2.jsp?id=<%=book.get("id")%>" class="display-4 text-primary" ><%=book.get("title") %></a></th>
 					</tr>
 				
 			
