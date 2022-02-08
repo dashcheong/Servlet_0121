@@ -12,19 +12,22 @@
 
 <%
 	//자바 문법
-	Calendar todayCalendar = Calendar.getInstance();
+	Calendar calendar = Calendar.getInstance();
+	calendar.add(Calendar.DATE,-1);
 	
-	SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일");
-	String dateString = formatter.format(todayCalendar.getTime());
-	todayCalendar.add(Calendar.DATE,100);
-	out.print(formatter.format(todayCalendar.getTime()));
+		
+	SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 M월 d일");
+	
+	
+
 %>
 <h2>오늘부터 1일</h2>
-<%for(int i = 100; i <= 1000; i+=100){ 
-	
+<%for(int i = 1; i <= 10; i++){ 
+	calendar.add(Calendar.DATE,100);
+	String dateString = formatter.format(calendar.getTime());
 %>
 
-<h1><%=i %>일 : <%todayCalendar.add(Calendar.DATE,100);todayCalendar.add(Calendar.DATE,-1);%><%= formatter.format(todayCalendar.getTime()) %><br></h1>
+<h1> <%=i*100 %> 일 : <%=dateString %><br></h1>
 
 <%} %>
 </body>
