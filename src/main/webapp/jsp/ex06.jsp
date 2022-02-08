@@ -16,23 +16,15 @@
 	
 	SimpleDateFormat formatter = new SimpleDateFormat("yyyy년 MM월 dd일");
 	String dateString = formatter.format(todayCalendar.getTime());
-	out.println("<br>" + dateString);
-	
 	todayCalendar.add(Calendar.DATE,100);
-	out.println("<br>" +  formatter.format(todayCalendar.getTime()));
-	
-	for(int i = 1; i <= 1000; i ++){
-
-		i = i +99;
-		out.println(i);
-	}
-	
+	out.print(formatter.format(todayCalendar.getTime()));
 %>
 <h2>오늘부터 1일</h2>
-<%for(int i = 1; i <= 1000; i ++){ 
-	i = i +99;
+<%for(int i = 100; i <= 1000; i+=100){ 
+	
 %>
-<h1><%=i %>일<br></h1>
+
+<h1><%=i %>일 : <%todayCalendar.add(Calendar.DATE,100);todayCalendar.add(Calendar.DATE,-1);%><%= formatter.format(todayCalendar.getTime()) %><br></h1>
 
 <%} %>
 </body>
