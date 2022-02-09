@@ -10,7 +10,7 @@ public class MysqlService {
 	
 	private static MysqlService mysqlService = null;
 	
-	private final String url = "jdbc:mysql://localhost:3306/practice01";
+	private final String url = "jdbc:mysql://localhost:3306/practice";
 	private final String id = "root";
 	private final String password = "root";
 	
@@ -30,7 +30,7 @@ public class MysqlService {
 		
 	}
 
-	// Á¢¼Ó±â´É
+	// ï¿½ï¿½ï¿½Ó±ï¿½ï¿½
 	public void connect() {
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
@@ -44,7 +44,7 @@ public class MysqlService {
 		
 	}
 	
-	// Á¢¼Ó ²÷±â 
+	// ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ 
 	public void disconnect() {
 		try {
 			this.statement.close();
@@ -56,7 +56,7 @@ public class MysqlService {
 		
 	}
 	
-	// select Äõ¸® ¼öÇà±â´É
+	// select ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public ResultSet select(String query) {
 		try {
 			return this.statement.executeQuery(query);
@@ -66,7 +66,7 @@ public class MysqlService {
 		}
 	}
 	
-	// insert, update, delete Äõ¸® ¼öÇà±â´É
+	// insert, update, delete ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	public int update(String query) {
 		try {
 			return this.statement.executeUpdate(query);

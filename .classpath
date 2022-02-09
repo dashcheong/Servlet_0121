@@ -6,7 +6,7 @@
 			<attribute name="module" value="true"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/Master/Desktop/프로그래밍/servlet 이클립스/eclipse-jee-2021-12-R-win32-x86_64/apache-tomcat-9.0.56/lib/mysql-connector-java-8.0.28.jar">
+	<classpathentry kind="lib" path="D:/정승훈/servlet/apache-tomcat-9.0.56-windows-x64/apache-tomcat-9.0.56/lib/mysql-connector-java-8.0.28.jar">
 		<attributes>
 			<attribute name="module" value="true"/>
 		</attributes>
