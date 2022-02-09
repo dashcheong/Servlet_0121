@@ -2,11 +2,8 @@ package com.dashcheong.database;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.sql.Connection;
-import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
@@ -16,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import com.dashcheong.common.MysqlService;
 
 @WebServlet("/db/ex01")
-public class ServletDbEx01 extends HttpServlet{
+public class ServletDbEx01 extends HttpServlet {
 	
 	@Override
 	public void doGet(HttpServletRequest request, HttpServletResponse response) throws IOException {
@@ -25,69 +22,63 @@ public class ServletDbEx01 extends HttpServlet{
 		PrintWriter out = response.getWriter();
 		
 //		try {
+//			
 //			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
 //			
-//			String url = "jdbc:mysql://localhost:3306/practice";
+//			String url = "jdbc:mysql://localhost:3306/test_db0107";
 //			String userId = "root";
 //			String password = "root";
 //			
-//			Connection connection = DriverManager.getConnection(url, userId,password);
+//			Connection connection = DriverManager.getConnection(url, userId, password);
 //			Statement statement = connection.createStatement();
-//			String selectQuery = "Select * From `used_goods`";
-//			ResultSet resultSet = statement.executeQuery(selectQuery);
 //			
-//	
+//			// Áß°í¹°Ç° ¸®½ºÆ® °¡Á®¿À±â 
+//			String selectQuery = "SELECT * FROM `used_goods`";
+//			ResultSet resultSet = statement.executeQuery(selectQuery);
 //			
 //			while(resultSet.next()) {
 //				String title = resultSet.getString("title");
 //				int price = resultSet.getInt("price");
 //				
-//				out.println("ì œí’ˆëª… : " + title);
-//				out.println("ê°€ê²© : " + price);
+//				out.println("Á¦Ç°¸í : " + title);
+//				out.println("°¡°İ : " + price);
 //			}
 //			
-//			String insertQuery = "Insert Into `used_goods`\r\n"
-//					+ "(`sellerId`,`title`,`price`,`description`,`picture`,`createdAt`,`updatedAt`)\r\n"
+//			String insertQuery = "INSERT INTO `used_goods`\r\n"
+//					+ "(`sellerId`, `title`, `price`, `description`, `picture`, `createdAt`, `updatedAt`)\r\n"
 //					+ "VALUES\r\n"
-//					+ "(3,'ê³ ì–‘ì´ ê°„ì‹ íŒë‹ˆë‹¤',2000,'ì €í¬ê³ ì–‘ì´ê°€ ê¹Œë‹¤ë¡œì›Œì„œ ì•ˆë¨¹ë„¤ìš”',NULL,now(),now());";
-//			//insert, update, delete ì¿¼ë¦¬
-//			//ë¦¬í„´ ê²°ê³¼ëŠ” ì‹¤í–‰ëœ í–‰ì˜ ê°¯ìˆ˜
+//					+ "(3, '°í¾çÀÌ °£½Ä ÆË´Ï´Ù', 2000, 'ÀúÈñ °í¾çÀÌ°¡ ±î´Ù·Î¿ö¼­ ¾È¸Ô³×¿ä', NULL, now(), now());";
+//			
+//			// insert, update, delete Äõ¸® 
+//			// ¸®ÅÏ °á°ú´Â ½ÇÇàµÈ ÇàÀÇ °¹¼ö 
 //			int count = statement.executeUpdate(insertQuery);
 //			
-//			out.println("ì‚½ì… : " + count);
+//			out.println("»ğÀÔ : " + count);
 //			
 //		} catch (SQLException e) {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
+		
 		MysqlService mysqlService = MysqlService.getInstance();
 		mysqlService.connect();
 		
-		String selectQuery = "Select * From `used_goods`";
+		String selectQuery = "SELECT * FROM `used_goods`";
 		ResultSet resultSet = mysqlService.select(selectQuery);
 		
 		try {
 			while(resultSet.next()) {
-			String title = resultSet.getString("title");
-			int price = resultSet.getInt("price");
-			
-			out.println("ì œí’ˆëª… : " + title);
-			out.println("ê°€ê²© : " + price);
-		}
-			
-			String insertQuery = "Insert Into `used_goods`\r\n"
-			+ "(`sellerId`,`title`,`price`,`description`,`picture`,`createdAt`,`updatedAt`)\r\n"
-			+ "VALUES\r\n"
-			+ "(3,'ê³ ì–‘ì´ ê°„ì‹ íŒë‹ˆë‹¤',2000,'ì €í¬ê³ ì–‘ì´ê°€ ê¹Œë‹¤ë¡œì›Œì„œ ì•ˆë¨¹ë„¤ìš”',NULL,now(),now());";
-			
-//			int count = statement.executeUpdate(insertQuery);
-		
+				String title = resultSet.getString("title");
+				int price = resultSet.getInt("price");
+				
+				out.println("Á¦Ç°¸í : " + title);
+				out.println("°¡°İ : " + price);
+			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-	
-		mysqlService.update(selectQuery);
+		
 		
 	}
 

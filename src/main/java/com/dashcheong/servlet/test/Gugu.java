@@ -22,7 +22,7 @@ public class Gugu extends HttpServlet{
 		int num = Integer.parseInt(numberString);
 		
 		
-		out.println("<html><head><title>구구단</title><head>");
+		out.println("<html><head><title>援ш뎄�떒</title><head>");
 		out.println("<body><ul>");
 			for( int i = 1; i < 10;i++) {
 				out.println("<li>" + num+" X "+i+" = "+ (num * i) + "</li>");

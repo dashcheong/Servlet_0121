@@ -7,12 +7,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 
 public class MysqlService {
-
 	
 	private static MysqlService mysqlService = null;
 	
-	
-	private final String url = "jdbc:mysql://localhost:3306/practice";
+	private final String url = "jdbc:mysql://localhost:3306/practice01";
 	private final String id = "root";
 	private final String password = "root";
 	
@@ -20,21 +18,25 @@ public class MysqlService {
 	private Statement statement;
 	
 	public static MysqlService getInstance() {
+		
 		if(mysqlService == null) {
 			mysqlService = new MysqlService();
 		}
 		
-		return mysqlService;
+		return mysqlService;	
 	}
 	
+	private MysqlService() {
+		
+	}
 
-	
-	// Ï†ëÏÜç Í∏∞Îä•
+	// ¡¢º”±‚¥…
 	public void connect() {
 		try {
 			DriverManager.registerDriver(new com.mysql.jdbc.Driver());
-			this.connection = DriverManager.getConnection(this.url, this.id,this.password);
+			this.connection = DriverManager.getConnection(this.url, this.id, this.password);
 			this.statement = this.connection.createStatement();
+			
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -42,40 +44,36 @@ public class MysqlService {
 		
 	}
 	
-	// Ï†ëÏÜç ÎÅäÍ∏∞
+	// ¡¢º” ≤˜±‚ 
 	public void disconnect() {
 		try {
 			this.statement.close();
 			this.connection.close();
-		}catch (SQLException e) {
+		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		
 	}
 	
-	// select ÏøºÎ¶¨ ÏàòÌñâÍ∏∞Îä•
+	// select ƒı∏Æ ºˆ«‡±‚¥…
 	public ResultSet select(String query) {
 		try {
 			return this.statement.executeQuery(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 			return null;
 		}
-	
-		
 	}
 	
-	// insert, update, delete ÏøºÎ¶¨ ÏàòÌñâÍ∏∞Îä•
+	// insert, update, delete ƒı∏Æ ºˆ«‡±‚¥…
 	public int update(String query) {
 		try {
 			return this.statement.executeUpdate(query);
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
+			
 			e.printStackTrace();
-			return-1;
+			return -1;
 		}
-		
 	}
-	
 }
